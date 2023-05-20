@@ -113,7 +113,7 @@ const page = () => {
           <input
             type="email"
             className="outline-none focus:ring px-4 py-2 rounded"
-            placeholder="abc@example.com"
+            placeholder="Email"
             value={email}
             onChange={(e) => setEmail(e.target.value)}
             required
@@ -122,7 +122,7 @@ const page = () => {
           <input
             type="password"
             className="outline-none focus:ring px-4 py-2 rounded"
-            placeholder="******************"
+            placeholder="Password"
             value={password}
             onChange={(e) => setPassword(e.target.value)}
             required

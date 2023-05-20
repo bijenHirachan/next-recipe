@@ -1,24 +1,20 @@
-"use client";
-
 import Card from "@components/Card";
 import axios from "axios";
 import Image from "next/image";
-import { useEffect, useState } from "react";
-import { toast } from "react-hot-toast";
 
-export default function Home() {
-  const [recipes, setRecipes] = useState([]);
+const getRecipes = async () => {
+  try {
+    const { data } = await axios.get(`${process.env.NEXTAUTH_URL}/api/recipes`);
 
-  useEffect(() => {
-    axios
-      .get("/api/recipes")
-      .then(({ data }) => {
-        setRecipes(data);
-      })
-      .catch(() => {
-        toast.error("Something went wrong!");
-      });
-  }, []);
+    return data;
+  } catch (error) {
+    console.error("Error fetching data:", error);
+    // Handle the error, display an error message, or take appropriate action
+  }
+};
+
+export default async function Home() {
+  const recipes = await getRecipes();
 
   return (
     <div className="grid grid-cols-2">
@@ -41,7 +37,7 @@ export default function Home() {
                 title={recipe.title}
                 description={recipe.description}
                 image={recipe.image}
-                author={recipe?.user?.username}
+                author={recipe.user.username}
                 categories={recipe.categories}
               />
             ))}

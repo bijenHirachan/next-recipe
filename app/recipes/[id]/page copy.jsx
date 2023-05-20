@@ -1,10 +1,6 @@
-"use client";
-
 import axios from "axios";
 import Image from "next/image";
-import { useRouter } from "next/navigation";
-import React, { useEffect, useState } from "react";
-import { toast } from "react-hot-toast";
+import React from "react";
 
 const imageStyle = {
   width: "500px",
@@ -12,21 +8,16 @@ const imageStyle = {
   objectFit: "contain",
 };
 
-const SingleRecipe = () => {
-  const [recipe, setRecipe] = useState({});
+const getSingleRecipe = async (id) => {
+  const { data } = await axios.get(
+    `${process.env.NEXTAUTH_URL}/api/recipes/${id}`
+  );
 
-  const params = useRouter();
+  return data;
+};
 
-  useEffect(() => {
-    axios
-      .get(`/api/recipes/${params.id}`)
-      .then(({ data }) => {
-        setRecipe(data);
-      })
-      .catch(() => {
-        toast.error("Something went wrong!");
-      });
-  }, [params.id]);
+const SingleRecipe = async ({ params }) => {
+  const recipe = await getSingleRecipe(params.id);
 
   return (
     <div className="w-full  p-6 h-[70vh] flex justify-center items-start mt-6">

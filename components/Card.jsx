@@ -35,7 +35,7 @@ const Card = ({ id, title, description, image, author, categories }) => {
           <h5 className="mb-2 text-xl font-medium leading-tight text-slate-700/90">
             {title}
           </h5>
-          {categories.length > 0 && (
+          {categories?.length > 0 && (
             <div className="flex gap-1 flex-wrap px-1">
               {categories.map((cat) => (
                 <span
