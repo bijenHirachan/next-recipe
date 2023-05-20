@@ -38,6 +38,7 @@ export default async function Home() {
                 description={recipe.description}
                 image={recipe.image}
                 author={recipe.user.username}
+                categories={recipe.categories}
               />
             ))}
         </div>

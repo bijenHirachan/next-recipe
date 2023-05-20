@@ -5,6 +5,7 @@ import { CldImage, CldUploadButton } from "next-cloudinary";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
 import { toast } from "react-hot-toast";
+import axios from "axios";
 
 const page = () => {
   const [image, setImage] = useState("");
@@ -24,15 +25,13 @@ const page = () => {
     e.preventDefault();
     setIsLoading(true);
     try {
-      const res = await fetch("/api/recipes", {
-        method: "POST",
-        body: JSON.stringify({ title, description, image }),
+      const { data } = await axios.post("/api/recipes", {
+        title,
+        description,
+        image,
       });
-
-      if (res.ok) {
-        toast.success("Recipe created successfully!");
-        router.push("/profile");
-      }
+      toast.success("Recipe created successfully!");
+      router.push("/profile");
     } catch (error) {
       console.log(error);
       toast.error("Something went wrong!");

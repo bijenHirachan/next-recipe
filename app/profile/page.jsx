@@ -9,6 +9,7 @@ import { toast } from "react-hot-toast";
 import { CiSettings } from "react-icons/ci";
 import { CldUploadButton } from "next-cloudinary";
 import RecipeTable from "./components/RecipeTable";
+import CreateCategory from "./components/CreateCategory";
 
 const imageStyle = {
   borderRadius: "100%",
@@ -19,6 +20,8 @@ const imageStyle = {
 
 const page = () => {
   const [isOpen, setIsOpen] = useState(false);
+
+  const [categories, setCategories] = useState(true);
 
   const [recipes, setRecipes] = useState([]);
 
@@ -112,7 +115,8 @@ const page = () => {
           </button>
         </form>
       </Modal>
-      <div className="flex flex-col justify-center items-center h-[90vh]">
+
+      <div className="flex flex-col justify-center items-center h-[90vh] flex-1">
         <div className="bg-amber-400/60 mx-6 w-full md:w-1/2 xl:w-1/3 px-4 py-10 rounded shadow-md shadow-slate-600/50">
           <div className="grid grid-cols-12 gap-5">
             <div className="col-span-5 flex flex-col justify-center items-center gap-3">
@@ -137,6 +141,13 @@ const page = () => {
               />
             </div>
           </div>
+        </div>
+
+        <div className="my-3 bg-amber-400/60 mx-6 w-full md:w-1/2 xl:w-1/3 px-4 py-10 rounded shadow-md shadow-slate-600/50">
+          <CreateCategory
+            categories={categories}
+            setCategories={setCategories}
+          />
         </div>
 
         <div className="my-3 bg-amber-400/60 mx-6 w-full md:w-1/2 xl:w-1/3 px-4 py-10 rounded shadow-md shadow-slate-600/50">

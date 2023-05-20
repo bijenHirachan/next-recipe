@@ -7,6 +7,7 @@ import { useParams } from "next/navigation";
 import { useRouter } from "next/navigation";
 import React, { useEffect, useState } from "react";
 import { toast } from "react-hot-toast";
+import RecipeCategories from "./components/RecipeCategories";
 
 const imageStyle = {
   width: "100px",
@@ -18,6 +19,7 @@ const RecipeUpdate = () => {
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
   const [image, setImage] = useState("");
+  const [categories, setCategories] = useState([]);
 
   const params = useParams();
 
@@ -34,6 +36,7 @@ const RecipeUpdate = () => {
         setTitle(data?.title);
         setDescription(data?.description);
         setImage(data?.image);
+        setCategories(data?.categories);
       })
       .catch(() => {
         toast.error("Something went wrong!");
@@ -58,7 +61,12 @@ const RecipeUpdate = () => {
   };
 
   return (
-    <div className="h-[80vh] flex flex-col space-y-6 justify-center items-center">
+    <div className="h-[80vh] flex flex-col space-y-3 justify-center items-center">
+      <RecipeCategories
+        recipeId={params.id}
+        categories={categories}
+        setCategories={setCategories}
+      />
       <form
         onSubmit={submitHandler}
         className="p-6 flex flex-col gap-3 w-full sm:w-1/2 lg:w-1/3"

@@ -8,7 +8,7 @@ export const GET = async (req) => {
   try {
     await connectDB();
 
-    const recipes = await Recipe.find().populate("user");
+    const recipes = await Recipe.find().populate("user categories");
 
     // return new Response(JSON.stringify(recipes), { status: 200 });
     return NextResponse.json(recipes);
@@ -20,7 +20,7 @@ export const GET = async (req) => {
 export const POST = async (req) => {
   const body = await req.json();
 
-  const { title, description, image, categories } = body;
+  const { title, description, image } = body;
 
   try {
     await connectDB();
@@ -36,7 +36,7 @@ export const POST = async (req) => {
       user: currentUser._id,
     });
 
-    return NextResponse(recipe, { status: 201 });
+    return NextResponse.json(recipe);
   } catch (error) {
     console.log(error);
     return new NextResponse("Internal Server Error", { status: 500 });

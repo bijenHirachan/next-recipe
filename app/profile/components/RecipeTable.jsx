@@ -92,9 +92,9 @@ const RecipeTable = ({ recipes, setRecipes }) => {
               <table className="min-w-full text-left text-sm font-light">
                 <thead className="border-b font-medium border-slate-600/50 text-slate-600">
                   <tr>
-                    <th scope="col" className="px-6 py-4">
+                    {/* <th scope="col" className="px-6 py-4">
                       Image
-                    </th>
+                    </th> */}
                     <th scope="col" className="px-6 py-4">
                       Recipe
                     </th>
@@ -109,7 +109,7 @@ const RecipeTable = ({ recipes, setRecipes }) => {
                       key={recipe._id}
                       className="border-b border-slate-600/50"
                     >
-                      <td className="whitespace-nowrap px-6 py-4 font-medium">
+                      {/* <td className="whitespace-nowrap px-6 py-4 font-medium">
                         <Image
                           width={32}
                           height={32}
@@ -118,11 +118,11 @@ const RecipeTable = ({ recipes, setRecipes }) => {
                           style={imageStyle}
                           quality={100}
                         />
-                      </td>
-                      <td className="whitespace-nowrap px-6 py-4 text-sm text-gray-600">
+                      </td> */}
+                      <td className="whitespace-nowrap px-6 py-4 text-sm text-slate-600">
                         {recipe.title}
                       </td>
-                      <td className="whitespace-nowrap px-6 pt-8 flex gap-1 justify-center items-end">
+                      <td className="whitespace-nowrap px-6 py-4  flex gap-1 ">
                         <Link href={`/recipes/${recipe._id}/update`}>
                           <AiOutlineEdit
                             size={20}

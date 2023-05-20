@@ -7,7 +7,7 @@ export const GET = async (req, { params }) => {
   try {
     await connectDB();
 
-    const recipe = await Recipe.findById(params.id);
+    const recipe = await Recipe.findById(params.id).populate("categories");
 
     if (!recipe) return new NextResponse("Recipe Not Found!", { status: 404 });
 

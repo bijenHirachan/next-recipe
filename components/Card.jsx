@@ -8,7 +8,7 @@ const imageStyle = {
   objectFit: "cover",
 };
 
-const Card = ({ id, title, description, image, author }) => {
+const Card = ({ id, title, description, image, author, categories }) => {
   return (
     // <div className="bg-white p-1 rounded col-span-1 shadow-lg shadow-slate-800">
     //   <Image width={500} height={500} src={image} alt="image" />
@@ -35,7 +35,19 @@ const Card = ({ id, title, description, image, author }) => {
           <h5 className="mb-2 text-xl font-medium leading-tight text-slate-700/90">
             {title}
           </h5>
-          <p className="mb-4 text-sm text-slate-600 dark:text-neutral-200">
+          {categories.length > 0 && (
+            <div className="flex gap-1 flex-wrap px-1">
+              {categories.map((cat) => (
+                <span
+                  className="text-xs outline outline-1 px-1 text-slate-600 outline-slate-600"
+                  key={cat._id}
+                >
+                  {cat.title}
+                </span>
+              ))}
+            </div>
+          )}
+          <p className="my-4 text-sm text-slate-600 dark:text-neutral-200">
             {description}
           </p>
         </div>
