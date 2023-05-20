@@ -10,7 +10,7 @@ const imageStyle = {
 
 const getSingleRecipe = async (id) => {
   const { data } = await axios.get(
-    `https://next-recipe-yix6-g27i72opm-bijenhirachan.vercel.app/api/recipes/${id}`
+    `${process.env.NEXTAUTH_URL}/api/recipes/${id}`
   );
 
   return data;

@@ -4,9 +4,7 @@ import Image from "next/image";
 
 const getRecipes = async () => {
   try {
-    const { data } = await axios.get(
-      "https://next-recipe-yix6-g27i72opm-bijenhirachan.vercel.app/api/recipes"
-    );
+    const { data } = await axios.get(`${process.env.NEXTAUTH_URL}/api/recipes`);
 
     return data;
   } catch (error) {
