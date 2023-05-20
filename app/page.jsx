@@ -4,7 +4,7 @@ import Image from "next/image";
 
 const getRecipes = async () => {
   try {
-    const { data } = await axios.get("http://localhost:3000/api/recipes");
+    const { data } = await axios.get("/api/recipes");
 
     return data;
   } catch (error) {

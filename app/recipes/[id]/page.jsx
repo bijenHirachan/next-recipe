@@ -9,7 +9,7 @@ const imageStyle = {
 };
 
 const getSingleRecipe = async (id) => {
-  const { data } = await axios.get(`http://localhost:3000/api/recipes/${id}`);
+  const { data } = await axios.get(`/api/recipes/${id}`);
 
   return data;
 };
