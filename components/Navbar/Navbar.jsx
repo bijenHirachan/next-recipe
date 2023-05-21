@@ -77,24 +77,40 @@ const Navbar = () => {
         {open && (
           <div className="transition-all duration-200 bg-white px-6 py-4 absolute top-10 right-0 w-48 rounded-md">
             <ul className="w-full flex flex-col items-center gap-3 text-sm font-semibold text-slate-600 ">
-              <li>
-                <Link href={"/recipes/create"} onClick={() => setOpen(false)}>
-                  Create Recipe
-                </Link>
-              </li>
-              <li>
-                <Link href={"/profile"} onClick={() => setOpen(false)}>
-                  My Profile
-                </Link>
-              </li>
-              {session?.user && (
+              {session?.user ? (
+                <>
+                  <li>
+                    <Link
+                      href={"/recipes/create"}
+                      onClick={() => setOpen(false)}
+                    >
+                      Create Recipe
+                    </Link>
+                  </li>
+                  <li>
+                    <Link href={"/profile"} onClick={() => setOpen(false)}>
+                      My Profile
+                    </Link>
+                  </li>
+                  <li className="w-full">
+                    <button
+                      onClick={signOut}
+                      className="transition w-full duration-200 ease-out hover:ease-in bg-slate-600 text-white text-xs px-4 py-2 rounded-full font-semibold hover:bg-slate-700"
+                    >
+                      Sign Out
+                    </button>
+                  </li>
+                </>
+              ) : (
                 <li className="w-full">
-                  <button
-                    onClick={signOut}
-                    className="transition w-full duration-200 ease-out hover:ease-in bg-slate-600 text-white text-xs px-4 py-2 rounded-full font-semibold hover:bg-slate-700"
-                  >
-                    Sign Out
-                  </button>
+                  <Link href={"/auth"}>
+                    <button
+                      onClick={() => setOpen(false)}
+                      className="transition w-full duration-200 ease-out hover:ease-in bg-slate-600 text-white text-xs px-4 py-2 rounded-full font-semibold hover:bg-slate-700"
+                    >
+                      Sign In
+                    </button>
+                  </Link>
                 </li>
               )}
             </ul>
