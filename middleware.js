@@ -7,5 +7,5 @@ export default withAuth({
 });
 
 export const config = {
-  matcher: ["/recipes/create", "/profile", "/recipes/:path/update"],
+  matcher: [],
 };
