@@ -2,7 +2,7 @@
 
 import axios from "axios";
 import Image from "next/image";
-import { useRouter } from "next/navigation";
+import { useParams } from "next/navigation";
 import React, { useEffect, useState } from "react";
 import { toast } from "react-hot-toast";
 
@@ -15,7 +15,7 @@ const imageStyle = {
 const SingleRecipe = () => {
   const [recipe, setRecipe] = useState({});
 
-  const params = useRouter();
+  const params = useParams();
 
   useEffect(() => {
     axios
