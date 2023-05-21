@@ -47,9 +47,7 @@ const Card = ({ id, title, description, image, author, categories }) => {
               ))}
             </div>
           )}
-          <p className="my-4 text-sm text-slate-600 dark:text-neutral-200">
-            {description}
-          </p>
+          <p className="my-4 text-sm text-slate-600">{description}</p>
         </div>
         <p className="absolute bottom-2 text-xs text-slate-500 right-2">
           By {author}
